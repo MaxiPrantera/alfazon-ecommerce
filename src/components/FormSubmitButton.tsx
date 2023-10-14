@@ -9,8 +9,7 @@ type FormSubmitButtonProps = {
 } & ComponentProps<"button">;
 
 export default function FormSubmitButton(
-    {children, className, ...props} : FormSubmitButtonProps
-){
+    {children, className, ...props} : FormSubmitButtonProps){
 
     const {pending} = useFormStatus();
 
