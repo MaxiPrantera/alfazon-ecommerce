@@ -13,8 +13,8 @@ interface ProductPageProps {
     }
 }
 
-const getProduct = cache(async (id:string) => {
-    const product = await prisma.product.findUnique({where:{id}});
+const getProduct = cache(async (id: string) => {
+    const product = await prisma.product.findUnique({where: {id}});
     if(!product) notFound();
     return product;
 });
@@ -39,7 +39,7 @@ export default async function ProductPage(
 
     const product = await getProduct(id);
 
-    return(
+    return (
         <div className="flex flex-col lg:flex-row gap-4 lg:items-center">
             <Image
                 src={product.imageUrl}
@@ -56,5 +56,5 @@ export default async function ProductPage(
                 <AddToCartButton productId={product.id} incrementProductQuantity={incrementProductQuantity}/>
             </div>
         </div>
-    )
+    );
 }

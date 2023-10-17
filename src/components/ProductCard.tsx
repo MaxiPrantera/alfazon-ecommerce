@@ -9,11 +9,13 @@ interface ProductCardProps {
 
 export default function ProductCard({product}: ProductCardProps){
 
-    const isNew = Date.now() - new Date(product.createdAt).getTime() < 1000 * 60 * 60 * 24 * 7;
+    const isNew = 
+    Date.now() - new Date(product.createdAt).getTime() < 
+    1000 * 60 * 60 * 24 * 7;
 
     return(
         <Link
-            href={"/product/" + product.id}
+            href={"/products/" + product.id}
             className="card w-full bg-base-100 hover:shadow-xl transition-shadow">
             <figure>
                 <Image
@@ -33,5 +35,5 @@ export default function ProductCard({product}: ProductCardProps){
                 <PriceTag price={product.price}/>
             </div>
         </Link>
-    )
+    );
 }
