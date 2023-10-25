@@ -1,15 +1,27 @@
 "use client";
 
 import { ComponentProps } from "react";
-import {  useFormStatus } from "react-dom";
+import ReactDom from "react-dom";
 
+const useFormStatus = (
+	ReactDom as any as {
+		experimental_useFormStatus: () => {
+			pending: boolean;
+			data: FormData | null;
+			method: 'get' | 'post' | null;
+			action: ((formData: FormData) => Promise<void>) | null;
+		};
+	}
+).experimental_useFormStatus;
 type FormSubmitButtonProps = {
     children: React.ReactNode,
     className?: string,
 } & ComponentProps<"button">;
 
-export default function FormSubmitButton(
-    {children, className, ...props} : FormSubmitButtonProps){
+export default function FormSubmitButton({
+    children, 
+    className,
+    ...props} : FormSubmitButtonProps){
 
     const {pending} = useFormStatus();
 
